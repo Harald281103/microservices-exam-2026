@@ -1,5 +1,6 @@
 package com.example.game.controllers;
 
+import com.example.game.services.GameService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,13 +13,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/game")
 public class GameController {
 
-    @GetMapping("/menu")
-    public String getMenu() {
-        return "Welcome to the game!";
+    private final GameService gameService;
+
+    @GetMapping("/start")
+    public String startGame() {
+        return gameService.startGame();
     }
 
-    @GetMapping("/run")
-    public String gatRun() {
-        return "Running";
+    @GetMapping("/stop")
+    public String stopGame() {
+        return gameService.stopGame();
+    }
+
+    @GetMapping("/status")
+    public String gameStatus() {
+        return gameService.gameStatus();
     }
 }

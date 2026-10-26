@@ -1,4 +1,9 @@
 package com.example.game.services;
 
-public class GameService {
+public interface GameService {
+
+    String startGame();
+    String stopGame();
+    String gameStatus();
+
 }
