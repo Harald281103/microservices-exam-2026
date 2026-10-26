@@ -1,25 +1,30 @@
 package com.example.game.services;
 
+import com.example.game.models.Game;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GameServiceImpl implements GameService{
-    private boolean gameRunning  = false;
+    private Game game;
 
     @Override
     public String startGame() {
-        gameRunning = true;
+        game = new Game(5);
+        game.setRunning(true);
+
         return "Game Started!";
     }
 
     @Override
     public String stopGame() {
-        gameRunning = false;
+        game.setRunning(false);
         return "Game Stopped!";
     }
 
     @Override
     public String gameStatus() {
-        return gameRunning ? "Game Started!" : "Game Not Started!";
+        if(game == null){return "Game Not Started!";}
+
+        return game.isRunning() ? "Game Running!" : "Game Not Running!";
     }
 }
