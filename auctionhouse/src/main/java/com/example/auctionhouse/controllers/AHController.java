@@ -1,12 +1,14 @@
 package com.example.auctionhouse.controllers;
 
+import com.example.auctionhouse.models.Item;
 import com.example.auctionhouse.services.AHService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -17,4 +19,10 @@ public class AHController {
 
     @GetMapping("/test")
     public String test(){return aHService.aHTest();}
+
+    @PostMapping("/addCat")
+    public Item addCat(){return aHService.addItem("Cat", "cute", null, 200, 5000);}
+
+    @GetMapping("/seeAll")
+    public List<Item> findAll(){return aHService.findAll();}
 }

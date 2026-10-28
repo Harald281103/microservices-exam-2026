@@ -24,15 +24,15 @@ public class Item {
     private String description;
     private String image;
     private int auctionPrice;
-    private int value;
+    private int actualValue;
 
-    public Item(String name, String description, String image, int auctionPrice, int value) {
+    public Item(String name, String description, String image, int auctionPrice, int actualValue) {
 
         this.name = name;
         this.description = description;
         this.image = image;
         this.auctionPrice = auctionPrice;
-        this.value = value;
+        this.actualValue = actualValue;
 
     }
 }
