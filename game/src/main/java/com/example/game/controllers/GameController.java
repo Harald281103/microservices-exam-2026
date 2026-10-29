@@ -15,6 +15,9 @@ public class GameController {
 
     private final GameService gameService;
 
+    @GetMapping("/auction")
+    public String getItem(){return gameService.getAHItem();}
+
     @GetMapping("/start")
     public String startGame() {
         return gameService.startGame();
