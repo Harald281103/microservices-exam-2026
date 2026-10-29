@@ -20,8 +20,11 @@ public class AHController {
     @GetMapping("/test")
     public String test(){return aHService.aHTest();}
 
+    @GetMapping("/auction")
+    public Item auctionItem(){return aHService.auctionItem();}
+
     @PostMapping("/addCat")
-    public Item addCat(){return aHService.addItem("Cat", "cute", null, 200, 5000);}
+    public Item addCat(){return aHService.addItem("Cat", "cute", null, 200, 5000, false);}
 
     @GetMapping("/seeAll")
     public List<Item> findAll(){return aHService.findAll();}

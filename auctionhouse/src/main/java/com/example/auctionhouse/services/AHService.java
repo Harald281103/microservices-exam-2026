@@ -7,7 +7,9 @@ import java.util.List;
 public interface AHService {
     String aHTest();
 
-    Item addItem(String name, String description, String image, int auctionPrice, int actualValue);
+    Item auctionItem();
+
+    Item addItem(String name, String description, String image, int auctionPrice, int actualValue, boolean bought);
 
     List<Item> findAll();
 }

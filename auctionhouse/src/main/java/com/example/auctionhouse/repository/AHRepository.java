@@ -3,5 +3,9 @@ package com.example.auctionhouse.repository;
 import com.example.auctionhouse.models.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface AHRepository extends JpaRepository<Item, Long> {
+
+    List<Item> findByBoughtFalse();
 }

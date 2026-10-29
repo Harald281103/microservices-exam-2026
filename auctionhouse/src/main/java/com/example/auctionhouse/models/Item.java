@@ -25,14 +25,16 @@ public class Item {
     private String image;
     private int auctionPrice;
     private int actualValue;
+    private boolean bought;
 
-    public Item(String name, String description, String image, int auctionPrice, int actualValue) {
+    public Item(String name, String description, String image, int auctionPrice, int actualValue, boolean bought) {
 
         this.name = name;
         this.description = description;
         this.image = image;
         this.auctionPrice = auctionPrice;
         this.actualValue = actualValue;
+        this.bought = false;
 
     }
 }
