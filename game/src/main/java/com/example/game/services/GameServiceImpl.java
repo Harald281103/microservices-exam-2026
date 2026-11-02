@@ -1,8 +1,7 @@
 package com.example.game.services;
 
-import com.example.game.clients.AHClient;
+import com.example.game.clients.Client;
 import com.example.game.models.Game;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class GameServiceImpl implements GameService{
     private Game game;
 
-    private final AHClient ahClient;
+    private final Client client;
 
     @Override
     public String startGame() {
@@ -23,7 +22,7 @@ public class GameServiceImpl implements GameService{
 
     @Override
     public String getAHItem(){
-        return ahClient.getAuctionItem();
+        return client.getAuctionItem();
     }
 
     @Override
