@@ -1,5 +1,6 @@
 package com.example.auctionhouse.services;
 
+import com.example.auctionhouse.client.AHClient;
 import com.example.auctionhouse.models.Item;
 import com.example.auctionhouse.repository.AHRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.Random;
 public class AHServiceImpl implements AHService {
 
     private final AHRepository aHRepository;
+    private final AHClient client;
 
     @Override
     public Item addItem(String name, String description, String image, int auctionPrice, int actualValue, boolean bought){
@@ -45,6 +47,15 @@ public class AHServiceImpl implements AHService {
     @Override
     public String aHTest() {
         return "Test from AuctionHouse";
+    }
+
+    @Override
+    public String testRemoveMoney(){
+        int remove = 200;;
+        client.removeMoney(remove);
+        int money = client.getMoney();
+        return "removed "+remove+"kr from player\n" +
+                "they now have "+money+"kr left";
     }
 
 }

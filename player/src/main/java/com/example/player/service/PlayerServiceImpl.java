@@ -14,4 +14,6 @@ public class PlayerServiceImpl implements PlayerService{
         return player.getMoney();
     }
 
+    public int getMoney(){return player.getMoney();}
+
 }

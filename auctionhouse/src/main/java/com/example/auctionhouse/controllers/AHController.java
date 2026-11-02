@@ -28,4 +28,7 @@ public class AHController {
 
     @GetMapping("/seeAll")
     public List<Item> findAll(){return aHService.findAll();}
+
+    @GetMapping("/testMoney")
+    public String testMoney(){return aHService.testRemoveMoney();}
 }

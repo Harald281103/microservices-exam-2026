@@ -2,10 +2,7 @@ package com.example.player.controller;
 
 import com.example.player.service.PlayerService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,4 +12,7 @@ public class PlayerController {
 
     @PostMapping("/removeMoney")
     public void removeMoney(@RequestParam int amount){playerService.removeMoney(amount);}
+
+    @GetMapping("/getMoney")
+    public int getMoney(){return playerService.getMoney();}
 }

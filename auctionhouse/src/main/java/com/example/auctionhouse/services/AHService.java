@@ -12,4 +12,6 @@ public interface AHService {
     Item addItem(String name, String description, String image, int auctionPrice, int actualValue, boolean bought);
 
     List<Item> findAll();
+
+    String testRemoveMoney();
 }

@@ -1,6 +1,6 @@
 package com.example.game.services;
 
-import com.example.game.clients.Client;
+import com.example.game.clients.GameClient;
 import com.example.game.models.Game;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class GameServiceImpl implements GameService{
     private Game game;
 
-    private final Client client;
+    private final GameClient client;
 
     @Override
     public String startGame() {
@@ -37,4 +37,5 @@ public class GameServiceImpl implements GameService{
 
         return game.isRunning() ? "Game Running!" : "Game Not Running!";
     }
+
 }
