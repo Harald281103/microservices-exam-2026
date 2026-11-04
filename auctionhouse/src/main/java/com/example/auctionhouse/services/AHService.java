@@ -1,6 +1,7 @@
 package com.example.auctionhouse.services;
 
 import com.example.auctionhouse.models.Item;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface AHService {
     List<Item> findAll();
 
     String testRemoveMoney();
+
+    String placeBid(Long itemId, int amount);
 }
