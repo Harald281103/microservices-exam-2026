@@ -32,4 +32,7 @@ public class AHController {
 
     @PostMapping("/bid")
     public String placeBid(@RequestParam Long itemId, @RequestParam int amount){return aHService.placeBid(itemId, amount);}
+
+    @PostMapping("/finishAuction")
+    public String finishAuction(@RequestParam Long itemId){return aHService.finishAuction(itemId);}
 }

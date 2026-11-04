@@ -17,4 +17,6 @@ public interface AHService {
     String testRemoveMoney();
 
     String placeBid(Long itemId, int amount);
+
+    String finishAuction(Long itemId);
 }

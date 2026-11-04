@@ -38,4 +38,9 @@ public class GameServiceImpl implements GameService{
         return game.isRunning() ? "Game Running!" : "Game Not Running!";
     }
 
+    @Override
+    public String nextRound() {
+
+    }
+
 }

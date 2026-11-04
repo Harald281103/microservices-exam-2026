@@ -99,4 +99,22 @@ public class AHServiceImpl implements AHService {
         return Bidder.Player+" has biddet "+amount+"kr";
     }
 
+    @Override
+    public String finishAuction(Long itemId){
+        Item item = aHRepository.findById(itemId).orElse(null);
+        Optional<Bid> exsistingBid = bidRepository.findByItemId(itemId);
+
+        if(exsistingBid.isEmpty()){return "you must bid to win this item!!!!!!!";}
+
+        Bid bid = exsistingBid.get();
+        Bidder winner =  bid.getBidder();
+
+        client.removeMoney(bid.getAmount());
+        item.setBought(true);
+        aHRepository.save(item);
+
+        return winner+" won "+item.getName()+" for "+bid.getAmount()+"kr!!!";
+    }
+
+
 }

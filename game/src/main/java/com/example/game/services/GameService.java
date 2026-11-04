@@ -6,5 +6,6 @@ public interface GameService {
     String stopGame();
     String gameStatus();
     String getAHItem();
+    String nextRound();
 
 }
