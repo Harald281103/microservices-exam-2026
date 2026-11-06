@@ -21,8 +21,16 @@ public class AHController {
     @GetMapping("/auction")
     public Item auctionItem(){return aHService.auctionItem();}
 
-    @PostMapping("/addCat")
-    public Item addCat(){return aHService.addItem("Cat", "cute", null, 200, 5000, false);}
+    @PostMapping("/addItems")
+    public String addItems(){
+        aHService.addItem("Cat", "cute", null, 200, 5000, false);
+        aHService.addItem("Dog", "woof", null, 200, 5000, false);
+        aHService.addItem("Rock", "just a rock", null, 50, 100, false);
+        aHService.addItem("Penguin", "quack?", null, 200, 5000, false);
+        aHService.addItem("Naponelons hat", "his personal hat",null, 250, 4000, false );
+        aHService.addItem("The Moon", "just a very big rock", null, 450, 1000000, false );
+        return "Successfully added items";
+    }
 
     @GetMapping("/seeAll")
     public List<Item> findAll(){return aHService.findAll();}

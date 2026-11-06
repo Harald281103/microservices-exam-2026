@@ -104,7 +104,12 @@ public class AHServiceImpl implements AHService {
         Item item = aHRepository.findById(itemId).orElse(null);
         Optional<Bid> exsistingBid = bidRepository.findByItemId(itemId);
 
-        if(exsistingBid.isEmpty()){return "you must bid to win this item!!!!!!!";}
+        if(exsistingBid.isEmpty()){
+            item.setBought(true);
+            aHRepository.save(item);
+            return "no bids item skipped";
+
+        }
 
         Bid bid = exsistingBid.get();
         Bidder winner =  bid.getBidder();

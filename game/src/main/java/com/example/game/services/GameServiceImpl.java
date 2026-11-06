@@ -4,6 +4,7 @@ import com.example.game.clients.GameClient;
 import com.example.game.models.Game;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.example.game.models.Item;
 
 @RequiredArgsConstructor
 @Service
@@ -16,13 +17,26 @@ public class GameServiceImpl implements GameService{
     public String startGame() {
         game = new Game(5);
         game.setRunning(true);
+        game.setCurrentRound(1);
 
-        return "Game Started!";
+        Item item = client.getAuctionItem();
+        game.setCurrentItemId(item.getId());
+
+        return "Game Started!\nRound 1: item being sold: "+item.getName()+" for "+item.getAuctionPrice()+"kr";
     }
 
     @Override
-    public String getAHItem(){
-        return client.getAuctionItem();
+    public Item getItem(){
+        if (!game.isRunning() || game == null){
+            throw new IllegalStateException("Game is not running");
+        }
+        if(game.getCurrentItemId() != null){
+            throw new  IllegalStateException("there is already an item in current game");
+        }
+
+        Item item = client.getAuctionItem();
+        game.setCurrentItemId(item.getId());
+        return item;
     }
 
     @Override
@@ -40,7 +54,24 @@ public class GameServiceImpl implements GameService{
 
     @Override
     public String nextRound() {
+        if((game == null) || !game.isRunning()){return "Game Not Started!";}
 
+        Long itemId = game.getCurrentItemId();
+        if(itemId == null){return "no active item";}
+
+        String result = client.finishAuction(itemId);
+
+        if(game.getCurrentRound() >= game.getMaxRounds()){
+            game.setRunning(false);
+            game.setCurrentItemId(null);
+            return result+"\nGame finished!";
+        }
+
+        game.setCurrentRound(game.getCurrentRound()+1);
+        Item item = client.getAuctionItem();
+        game.setCurrentItemId(item.getId());
+
+        return result+"\nStarting Round "+game.getCurrentRound()+", New item is: "+item.getName()+" for "+item.getAuctionPrice()+"kr";
     }
 
 }
