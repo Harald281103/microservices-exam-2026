@@ -1,6 +1,7 @@
 package com.example.auctionhouse.services;
 
 import com.example.auctionhouse.client.AHClient;
+import com.example.auctionhouse.kafka.AuctionProducer;
 import com.example.auctionhouse.models.Bid;
 import com.example.auctionhouse.models.Bidder;
 import com.example.auctionhouse.models.Item;
@@ -21,6 +22,7 @@ public class AHServiceImpl implements AHService {
     private final AHRepository aHRepository;
     private final AHClient client;
     private final BidRepository bidRepository;
+    private final AuctionProducer auctionProducer;
 
     @Override
     public Item addItem(String name, String description, String image, int auctionPrice, int actualValue, boolean bought){
@@ -117,6 +119,7 @@ public class AHServiceImpl implements AHService {
         client.removeMoney(bid.getAmount());
         item.setBought(true);
         aHRepository.save(item);
+        auctionProducer.send(winner +", "+ item.getActualValue());
 
         return winner+" won "+item.getName()+" for "+bid.getAmount()+"kr!!!";
     }

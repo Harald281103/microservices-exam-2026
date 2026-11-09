@@ -10,6 +10,4 @@ public class AuctionhouseApplication {
         SpringApplication.run(AuctionhouseApplication.class, args);
     }
 
-
-
 }
