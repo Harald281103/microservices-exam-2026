@@ -1,6 +1,4 @@
 package com.example.score.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface ScoreRepository extends JpaRepository<Score , Long> {
+public class ScoreRepository {
 }
