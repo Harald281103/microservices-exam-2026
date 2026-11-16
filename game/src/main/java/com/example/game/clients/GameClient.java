@@ -7,7 +7,8 @@ import org.springframework.web.client.RestClient;
 @Component
 public class GameClient {
 
-    private final RestClient restClientAH = RestClient.create("http://localhost:8081");
+    private final RestClient restClientAH = RestClient.create(
+            System.getenv().getOrDefault("AUCTIONHOUSE_URL", "http://localhost:8081"));
 
     public Item getAuctionItem(){
         return restClientAH.get()

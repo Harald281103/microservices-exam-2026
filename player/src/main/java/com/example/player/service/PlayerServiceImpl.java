@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 @NoArgsConstructor
 public class PlayerServiceImpl implements PlayerService{
-    private Player player = new Player(500, "Bob");
+    private Player player = new Player(5000, "Bob");
 
     public int removeMoney(int amount){
         player.setMoney(player.getMoney() - amount);

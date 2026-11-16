@@ -5,7 +5,8 @@ import org.springframework.web.client.RestClient;
 
 @Component
 public class ScoreClient {
-    private final RestClient restClientScore = RestClient.create("http://localhost:8084");
+    private final RestClient restClientScore = RestClient.create(
+            System.getenv().getOrDefault("SCORE_URL", "http://localhost:8084"));
 
     public String getScore(){
         return restClientScore.get()

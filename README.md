@@ -1,48 +1,27 @@
-#startup:
-#mvn spring-boot:run
+Starting the program:
+"mvn clean package -DskipsTests"
+"docker compose up -d --build"
 
-#shut down
-#ctrl + c
+open: http://localhost:8080/swagger-ui/index.html#/
 
-#move between folders
-#.//"name"
+then:
+execute start
+you will then see the item that you shall bid in its response body
 
-#clean terminal
-#cls
+go to bid
+make a bid (you only need to write the number, not the currency)
+execute bid
 
-#kafka:
-#ps compose up
-#ps compose down
+when you want to go to next bidding round:
+execute nextRound
 
-#docker build image
-#docker build -t auction-"microservice name" ./"microservice name"
+go back to make a bid and place a new bid
 
-#docker run 
-#docker run --rm -p "port":"port" auction-"microservice name"
+after 5 rounds the game finishes
 
-#swagger for game
-#http://localhost:8080/swagger-ui/index.html
+then you can go to seeTop10
+execute and see your score
 
-#swagger for auction house
-#http://localhost:8081/swagger-ui/index.html
-
-------------------------------------------------------------------------------------------------------------------------
-#git commands
-#check current branch: 
-#git branch
-
-#create new branch and switch to it
-#git switch -c "name"
-
-#switching branches
-#git switch "name"
-
-#check changes
-#git status
-
-#commit
-#git add .
-#git commit -m "description"
-
-#push
-#git push -u origin "branch name"
+then you can execute stop
+and finally, write :
+"docker compose down" in the terminal

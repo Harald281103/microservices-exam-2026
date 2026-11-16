@@ -1,0 +1,19 @@
+#git commands
+#check current branch:
+#git branch
+
+#create new branch and switch to it
+#git switch -c "name"
+
+#switching branches
+#git switch "name"
+
+#check changes
+#git status
+
+#commit
+#git add .
+#git commit -m "description"
+
+#push
+#git push -u origin "branch name"
