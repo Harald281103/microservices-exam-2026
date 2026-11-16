@@ -22,4 +22,22 @@ public class GameClient {
                 .retrieve()
                 .body(String.class);
     }
+
+    public void addItems(){
+        restClientAH.post()
+                .uri("/api/auctionhouse/addItems")
+                .retrieve()
+                .toBodilessEntity();
+    }
+
+    public String bid(Long id,int amount){
+        return restClientAH.post()
+                .uri(uriBuilder -> uriBuilder.path("/api/auctionhouse/bid")
+                        .queryParam("itemId", id)
+                        .queryParam("amount", amount)
+                        .build())
+                .retrieve()
+                .body(String.class);
+    }
+
 }

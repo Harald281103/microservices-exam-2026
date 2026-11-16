@@ -1,6 +1,7 @@
 package com.example.game.services;
 
 import com.example.game.clients.GameClient;
+import com.example.game.clients.ScoreClient;
 import com.example.game.models.Game;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,12 +13,15 @@ public class GameServiceImpl implements GameService{
     private Game game;
 
     private final GameClient client;
+    private final ScoreClient sClient;
 
     @Override
     public String startGame() {
         game = new Game(5);
         game.setRunning(true);
         game.setCurrentRound(1);
+
+        client.addItems();
 
         Item item = client.getAuctionItem();
         game.setCurrentItemId(item.getId());
@@ -27,7 +31,7 @@ public class GameServiceImpl implements GameService{
 
     @Override
     public Item getItem(){
-        if (!game.isRunning() || game == null){
+        if (game == null || !game.isRunning()){
             throw new IllegalStateException("Game is not running");
         }
         if(game.getCurrentItemId() != null){
@@ -72,6 +76,17 @@ public class GameServiceImpl implements GameService{
         game.setCurrentItemId(item.getId());
 
         return result+"\nStarting Round "+game.getCurrentRound()+", New item is: "+item.getName()+" for "+item.getAuctionPrice()+"kr";
+    }
+
+    @Override
+    public String bid(int amount){
+        if(game == null || !game.isRunning() || game.getCurrentItemId() == null){return "No ongoing auction";}
+        return client.bid(game.getCurrentItemId(), amount);
+    }
+
+    @Override
+    public String getTop10() {
+        return sClient.getScore();
     }
 
 }

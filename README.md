@@ -7,11 +7,24 @@
 #move between folders
 #.//"name"
 
+#clean terminal
+#cls
+
+#kafka:
+#ps compose up
+#ps compose down
+
+#docker build image
+#docker build -t auction-"microservice name" ./"microservice name"
+
+#docker run 
+#docker run --rm -p "port":"port" auction-"microservice name"
+
 #swagger for game
 #http://localhost:8080/swagger-ui/index.html
 
 #swagger for auction house
-.#http://localhost:8081/swagger-ui/index.html
+#http://localhost:8081/swagger-ui/index.html
 
 ------------------------------------------------------------------------------------------------------------------------
 #git commands

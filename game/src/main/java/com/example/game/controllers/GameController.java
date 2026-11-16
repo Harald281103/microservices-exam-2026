@@ -4,10 +4,7 @@ import com.example.game.models.Item;
 import com.example.game.services.GameService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -39,4 +36,10 @@ public class GameController {
     public String gameStatus() {
         return gameService.gameStatus();
     }
+
+    @PostMapping("/bid")
+    public String bid(@RequestParam int amount){return gameService.bid(amount);}
+
+    @GetMapping("/top10")
+    public String gameTop10(){return gameService.getTop10();}
 }

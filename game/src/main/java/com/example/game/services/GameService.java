@@ -9,5 +9,7 @@ public interface GameService {
     String gameStatus();
     Item getItem();
     String nextRound();
+    String bid(int bid);
+    String getTop10();
 
 }
