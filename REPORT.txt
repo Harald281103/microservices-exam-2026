@@ -1,0 +1,54 @@
+I decided to drop making an dumb "AI" for this project
+as i startet the coding, i came to the realistaion that adding the AI would take too much time, was a bit too ambitious given the time limit
+and it was more of a fun thing to add, and less of a necessity that needed to be in my exam delivery.
+The idea of the AI was to make the game more fun and challenging, but this is a test to test my abilities, so i had to prioritise differently
+
+by not adding the ai, i had more time to implement and improve the code. as things took ended up taking a while, such as bug fixes.
+as this is more a test to see my microservices abilities and less to make a genuiene fun and completed game ready to be published to storefronts
+
+another feature that was on the plan but wasnt implemented was a participation fee
+the idea was to pressure the players into feeling they had to bid, or they would just lose money, like how poker games have blinds.
+and to be very honest, i simply just forgott about it...
+i forgot about it as i was too focused on the code to remember to look back at my original plan, a mistake i will not repeat.
+altough it was not an essential feature for this exam, i still promised it and did not deliver, which i know is very bad on a profesional setting.
+
+Looking back i see that i should have planned my time much better (altough i did start the moment the exam dropped and have worked consistently since)
+i shouldve also remembered to check my plan instead of just continue to code
+
+i belive one of the big reasons i forgott about the parictipation fee was due to me dropping the AI
+as i started to see the game more as a test of abilities rather than a game, and the participation fee i promised was cought in the cross fire
+
+the same can also be said when it comes to declearing a winner at the end of the game
+yes, there is a leader board, but no victory screen, so i kinda feel it got the same treatment as the participation fee
+
+the menu screen was also removed from the game
+as you probably know, the entire "frontend" is just swagger's api
+i originally planned to make and design a small frontend webpage, but i didnt, for the exact same reasons i didnt add the ai
+
+but i do see that in the arbeidskrav, the things i didnt add was already put under "smallest possible build" section
+
+but i still managed around half of it, like randomizing which item is being bidded on, the leaderboard and the option for storing images
+altough i didnt acutally add any images.
+
+
+communication:
+i use rest apis to get and send information to other services that the game needed to run properly
+such as auctionhouse checking the players money to see if they can bid or not, like if they have enough money
+
+and i used kafka between score and auctionhouse, as score isnt a neccesity for the game to run as intended.
+it also allows the game to continue while score i managing the score
+and by using kafka, i can still play the game, even if the leaderboard is temporarily down
+
+i found communication between different microservies to be very straight forward, as clients made it not very hard
+and by having these 4 microservies, i could easily organize the work between them
+
+architecture:
+i have 4 microservices, and i feel they communicate the way i set up originally
+game communicates with auctionhouse and score
+it communicates with auction house to help with the flow of the game, and communicate with score to sendt and get scores
+auctionhouse communicate with player, as it needs the players to check their money and see who is bidding and who won a round
+
+for technologies i have used docker, kafka and java with some dependencies
+i use docker to run the entire program with kafka together
+i had some problem with kafka when i had to make the docker compose, i had some problem with ports and adresses and that took some time
+
